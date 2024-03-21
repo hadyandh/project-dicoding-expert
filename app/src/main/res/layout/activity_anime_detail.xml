@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".detail.AnimeDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backMB"
+            style="@style/Base.Theme.AnimeLib.MaterialButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/transparent"
+            app:icon="@drawable/ic_arrow_back"
+            app:iconGravity="end"
+            app:iconTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favoriteMB"
+            style="@style/Base.Theme.AnimeLib.MaterialButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/transparent"
+            app:icon="@drawable/ic_favorite_outline"
+            app:iconGravity="textStart"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp" />
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/backMB"
+            tools:text="Yahari Ore no Seishun Love Come wa Machigatteiru." />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bannerMCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTV">
+
+            <ImageView
+                android:id="@+id/bannerIV"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/rating"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/bannerMCV"
+            app:layout_constraintTop_toTopOf="@id/bannerMCV" />
+
+        <TextView
+            android:id="@+id/ratingTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="TV Series" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/status"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/ratingTV"
+            app:layout_constraintTop_toBottomOf="@id/ratingTV" />
+
+        <TextView
+            android:id="@+id/statusTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:text="Completed" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/season"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/statusTV"
+            app:layout_constraintTop_toBottomOf="@id/statusTV" />
+
+        <TextView
+            android:id="@+id/seasonTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:text="TV Series" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/synopsis"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/bannerMCV"
+            app:layout_constraintTop_toBottomOf="@id/bannerMCV" />
+
+        <TextView
+            android:id="@+id/synopsisTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut tortor vitae tellus tempus suscipit. Maecenas bibendum id nunc eu interdum. Nullam luctus dapibus purus eget ornare. Integer lacinia neque magna, vel gravida tortor ultrices molestie. Curabitur vel erat congue, vehicula diam at, tristique augue. Phasellus tempus facilisis urna sit amet sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer venenatis libero vitae dolor cursus viverra. Suspendisse a tortor iaculis, tempus risus et, tincidunt justo." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
