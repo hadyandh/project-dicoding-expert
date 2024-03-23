@@ -9,6 +9,4 @@
     <color name="colorText">#333333</color>
     <color name="colorTextSecondary">#8E8D8D</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00403F3F</color>
-    <color name="opacity55">#8B403F3F</color>
 </resources>
