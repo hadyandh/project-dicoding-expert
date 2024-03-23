@@ -29,9 +29,6 @@ jobs:
     steps:
       - checkout
       - run: echo $ANDROID_HOME
-      - android/start-emulator-and-run-tests:
-          avd-name: 'kotlin'
-          system-image: system-images;android-UpsideDownCake;google_apis;x86_64
       - gradle/collect_test_results
   deploy-beta:
     docker:
@@ -58,7 +55,7 @@ workflows:
           executor:
             name: android/android-machine
             tag: "2023.04.1"
-          system-image: "system-images;android-UpsideDownCake;google_apis;x86_64"
+          system-image: "system-images;android-13;google_apis;x86_64"
           install-system-image: true
       - gradle/test:
           executor:
