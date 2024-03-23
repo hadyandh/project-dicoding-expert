@@ -1,5 +1,6 @@
 package com.hunhun.animelib.favorite
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -13,17 +14,22 @@ import com.hunhun.animelib.core.ui.AnimeAdapter
 import com.hunhun.animelib.core.utils.RvItemDecoration
 import com.hunhun.animelib.databinding.FragmentFavoriteBinding
 import com.hunhun.animelib.detail.AnimeDetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.hunhun.animelib.di.FavoriteModuleDependencies
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
-    private val viewModel: FavoriteViewModel by viewModels()
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val viewModel: FavoriteViewModel by viewModels {
+        factory
+    }
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,7 +56,14 @@ class FavoriteFragment : Fragment() {
                 layoutManager = gridLayoutManager
                 adapter = animeAdapter
                 setHasFixedSize(true)
-                addItemDecoration(RvItemDecoration(spanCount, 16, 16, false))
+                addItemDecoration(
+                    RvItemDecoration(
+                        spanCount,
+                        16,
+                        16,
+                        false
+                    )
+                )
             }
 
             viewModel.favoriteAnime.observe(viewLifecycleOwner) { animeList ->
@@ -59,6 +72,19 @@ class FavoriteFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        DaggerFavoriteComponent.builder()
+            .context(context)
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    context.applicationContext,
+                    FavoriteModuleDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

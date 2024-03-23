@@ -59,7 +59,14 @@ class HomeFragment : Fragment() {
                 layoutManager = gridLayoutManager
                 adapter = animeAdapter
                 setHasFixedSize(true)
-                addItemDecoration(RvItemDecoration(spanCount, 16, 16, false))
+                addItemDecoration(
+                    RvItemDecoration(
+                        spanCount,
+                        16,
+                        16,
+                        false
+                    )
+                )
             }
         }
     }

@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.hunhun.animelib.R
+import com.hunhun.animelib.core.R
+import com.hunhun.animelib.core.databinding.RowItemAnimeBinding
 import com.hunhun.animelib.core.domain.model.Anime
-import com.hunhun.animelib.databinding.RowItemAnimeBinding
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
 
