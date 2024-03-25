@@ -12,9 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hunhun.animelib.core.ui.AnimeAdapter
 import com.hunhun.animelib.core.utils.RvItemDecoration
-import com.hunhun.animelib.databinding.FragmentFavoriteBinding
 import com.hunhun.animelib.detail.AnimeDetailActivity
 import com.hunhun.animelib.di.FavoriteModuleDependencies
+import com.hunhun.animelib.favorite.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -29,7 +29,7 @@ class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
