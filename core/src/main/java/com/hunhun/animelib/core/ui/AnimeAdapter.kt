@@ -13,7 +13,6 @@ import com.hunhun.animelib.core.domain.model.Anime
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Anime>()
     var onItemClick: ((Anime) -> Unit)? = null
 
     private val diffUtil = object : DiffUtil.ItemCallback<Anime>() {
@@ -24,16 +23,12 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
         override fun areContentsTheSame(oldItem: Anime, newItem: Anime): Boolean {
             return oldItem == newItem
         }
-
     }
 
     private val asyncListDiffer = AsyncListDiffer(this, diffUtil)
 
     fun setData(newListData: List<Anime>?) {
-        if (newListData == null) return
-        listData.clear()
-        listData.addAll(newListData)
-        asyncListDiffer.submitList(listData)
+        asyncListDiffer.submitList(newListData)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -42,7 +37,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
     override fun getItemCount() = asyncListDiffer.currentList.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listData[position]
+        val data = asyncListDiffer.currentList[position]
         holder.bind(data)
     }
 
@@ -54,12 +49,10 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
                     .load(data.banner)
                     .into(bannerIV)
                 titleTV.text = data.title
-            }
-        }
 
-        init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
+                root.setOnClickListener {
+                    onItemClick?.invoke(data)
+                }
             }
         }
     }
